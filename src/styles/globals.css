@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+	:root {
+		--text: 109 104 117;
+		--background: 255 240 245;
+		--primary: 181 131 141;
+		--secondary: 175 205 182;
+		--accent: 244 175 105;
+	}
+
+	.dark {
+		--text: 234 231 240;
+		--background: 12 10 16;
+		--primary: 178 172 202;
+		--secondary: 94 60 84;
+		--accent: 172 125 140;
+	}
+}
+
+@layer base {
+	body {
+		@apply bg-background text-foreground;
+	}
+}
