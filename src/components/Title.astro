@@ -1,0 +1,18 @@
+---
+type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<h2
+  class:list={[
+    ["relative text-3xl w-fit ml-8"],
+    [
+      "before:bg-secondary before:h-[12px] before:left-[-0.5em] before:bottom-0 before:z-[-1] before:content-[''] before:w-full before:absolute",
+    ],
+  ]}
+>
+  {title}
+</h2>

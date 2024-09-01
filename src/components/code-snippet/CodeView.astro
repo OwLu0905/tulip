@@ -1,0 +1,29 @@
+---
+import { Code } from "astro:components";
+import "./CodeView.css";
+
+type Props = {
+  html?: string;
+  css: string;
+  js?: string;
+};
+
+const { html, css, js } = Astro.props;
+
+// TODO: add file selected tab
+---
+
+<div class="absolute top-1 right-2 ml-auto" transition:animate="slide">
+  Copy
+</div>
+<Code
+  code={css}
+  lang="css"
+  themes={{
+    light: "catppuccin-frappe",
+    dark: "tokyo-night",
+  }}
+  wrap
+  class="shadow-code"
+/>
+<div class="absolute bottom-1 right-2 ml-auto text-end">tmp</div>

@@ -10,6 +10,9 @@ export default {
 				secondary: 'rgb(var(--secondary) / <alpha-value>)',
 				accent: 'rgb(var(--accent) / <alpha-value>)',
 			},
+			boxShadow: {
+				code: "0px 0px 1.5rem 2px rgb(var(--accent))"
+			}
 		},
 	},
 	plugins: [],
