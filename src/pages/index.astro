@@ -53,13 +53,13 @@ const css = `.code {
     <DynamicNoiseBackground />
 
     <nav
-      class="flex items-center px-4 truncate h-10 bg-primary w-fit mx-28 rounded-lg backdrop-blur-[8.25rem] shadow-md my-4"
+      class="mx-28 my-4 flex h-10 w-fit items-center truncate rounded-lg bg-primary px-4 shadow-md backdrop-blur-[8.25rem]"
     >
       <button id="mode-theme">mode toggle</button>
     </nav>
-    <section class="gap-4 mx-4 my-10 flex-col flex lg:mx-10">
+    <section class="mx-4 my-10 flex flex-col gap-4 lg:mx-10">
       <Title title={"twtwtwtwtwtw"} />
-      <div class="flex flex-col lg:flex-row items-start gap-2 lg:gap-4">
+      <div class="flex flex-col items-start gap-2 lg:flex-row lg:gap-4">
         <ShadowRoot
           css={css}
           html={`<div>
@@ -67,7 +67,7 @@ const css = `.code {
 							</div>`}
         />
         <div
-          class="w-full lg:w-2/5 flex-shrink-0 [&>pre]:h-[60dvh] [&>pre]:lg:h-[80dvh] relative"
+          class="relative w-full flex-shrink-0 lg:w-2/5 [&>pre]:h-[60dvh] [&>pre]:lg:h-[80dvh]"
         >
           <CodeView css={css} />
         </div>
