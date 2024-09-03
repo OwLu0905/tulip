@@ -3,21 +3,22 @@
 @tailwind utilities;
 
 
+/* --text: 109 104 117; */
 @layer base {
 	:root {
-		--text: 109 104 117;
-		--background: 255 240 245;
+		--text: 10 10 10;
+		--background: 255 250 245;
 		--primary: 181 131 141;
 		--secondary: 175 205 182;
 		--accent: 244 175 105;
 	}
 
 	.dark {
-		--text: 234 231 240;
-		--background: 12 10 16;
-		--primary: 178 172 202;
-		--secondary: 94 60 84;
-		--accent: 172 125 140;
+		--text: 242 234 246;
+		--background: 21 11 25;
+		--primary: 196 161 215;
+		--secondary: 112 48 87;
+		--accent: 186 94 133;
 	}
 }
 

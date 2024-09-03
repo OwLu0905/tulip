@@ -3,27 +3,112 @@ import { Code } from "astro:components";
 import "./CodeView.css";
 
 type Props = {
-  html?: string;
   css: string;
+  html: string;
   js?: string;
 };
 
-const { html, css, js } = Astro.props;
-
-// TODO: add file selected tab
+const { css, html, js } = Astro.props;
 ---
 
-<div class="absolute top-1 right-2 ml-auto" transition:animate="slide">
-  Copy
-</div>
-<Code
-  code={css}
-  lang="css"
-  themes={{
-    light: "catppuccin-frappe",
-    dark: "tokyo-night",
-  }}
-  wrap
-  class="shadow-code"
-/>
-<div class="absolute bottom-1 right-2 ml-auto text-end">tmp</div>
+<style>
+  .astro-code-font {
+    font-family: monospace;
+    text-align: center;
+    div {
+      width: fit-content;
+    }
+  }
+</style>
+
+<fieldset class="relative flex h-[60dvh] items-start gap-1">
+  <div class="absolute right-2 top-10 z-[1] ml-auto">COPY</div>
+
+  <input
+    class="peer/html hidden"
+    id="html"
+    name="code"
+    value="html"
+    type="radio"
+    checked
+  />
+  <label
+    for="html"
+    class="astro-code-font relative z-[1] mb-0 ml-4 flex items-center bg-transparent px-6 py-2"
+  >
+    <div class="z-[1]">HTML</div>
+  </label>
+
+  <Code
+    code={html}
+    lang={"html"}
+    themes={{
+      light: "catppuccin-frappe",
+      dark: "rose-pine",
+    }}
+    wrap
+    class="absolute left-0 top-8 hidden h-full w-full peer-checked/html:block"
+  />
+
+  <input
+    class="peer/css hidden"
+    id="css"
+    name="code"
+    value="css"
+    type="radio"
+  />
+  <label
+    for="css"
+    class="astro-code-font z-[1] mb-0 flex items-center bg-transparent px-6 py-2"
+  >
+    <div class="z-[1]">CSS</div>
+  </label>
+  <Code
+    code={css}
+    lang={"css"}
+    themes={{
+      light: "catppuccin-frappe",
+      dark: "rose-pine",
+    }}
+    wrap
+    class="absolute left-0 top-8 hidden h-full w-full peer-checked/css:block"
+  />
+
+  {
+    js && (
+      <input
+        class="peer/js hidden"
+        id="js"
+        name="code"
+        value="js"
+        type="radio"
+        checked
+      />
+    )
+  }
+  {
+    js && (
+      <label
+        for="js"
+        class="astro-code-font z-[1] mb-0 flex items-center bg-transparent px-6 py-2"
+      >
+        <div class="z-[1]">JAVASCRIPT</div>
+      </label>
+    )
+  }
+  {
+    js && (
+      <Code
+        code={js}
+        lang={"ts"}
+        themes={{
+          light: "catppuccin-frappe",
+          dark: "rose-pine",
+        }}
+        wrap
+        class="absolute left-0 top-8 hidden h-full w-full peer-checked/js:block"
+      />
+    )
+  }
+  <div class="absolute -bottom-6 right-2 ml-auto text-end">tmp</div>
+</fieldset>

@@ -1,16 +1,36 @@
 ---
+import BaseLayout from "@layout/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("animation");
-  return blogEntries.map((entry) => ({
+  return blogEntries.map((entry, index) => ({
     params: { slug: entry.slug },
-    props: { entry },
+    props: {
+      entry,
+      prevSlug: blogEntries[index - 1]?.slug,
+      nextSlug: blogEntries[index + 1]?.slug,
+    },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, prevSlug, nextSlug } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Content />
+<BaseLayout>
+  <Content />
+</BaseLayout>
+<script define:vars={{ prevSlug, nextSlug }}>
+  document.addEventListener("astro:page-load", () => {
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft" && prevSlug !== undefined) {
+        this.location.href = `/posts/${prevSlug}`;
+      }
+
+      if (e.key === "ArrowRight" && nextSlug !== undefined) {
+        this.location.href = `/posts/${nextSlug}`;
+      }
+    });
+  });
+</script>

@@ -2,20 +2,27 @@
 type Props = {
   html: string;
   css: string;
+  js?: string;
 };
 
-const { html, css } = Astro.props;
+const { html, css, js } = Astro.props;
+
+const uuid = crypto.randomUUID();
 ---
 
 <div
-  class="p-10 flex flex-col w-full h-full bg-white/30 rounded-xl backdrop-blur leading-10"
+  class="flex h-[60dvh] w-full flex-col rounded-xl py-20 leading-10 backdrop-blur"
 >
-  <div id="shadow-host"></div>
+  <div
+    id={uuid}
+    class="relative z-[1] flex h-full w-full items-center justify-center"
+  >
+  </div>
 </div>
 
-<script is:inline define:vars={{ html, css }}>
-  document.addEventListener("DOMContentLoaded", () => {
-    const host = document.getElementById("shadow-host");
+<script define:vars={{ html, css, js, uuid }}>
+  document.addEventListener("astro:page-load", () => {
+    const host = document.getElementById(uuid);
     if (!host) return;
     const shadowRoot = host.attachShadow({ mode: "open" });
 
@@ -27,8 +34,16 @@ const { html, css } = Astro.props;
     const div = document.createElement("div");
     div.innerHTML = html;
 
+    // Create a script for the HTML content
+
+    const script = document.createElement("script");
+    if (js) {
+      script.innerHTML = js;
+    }
+
     // Append the style and div to the shadow root
     shadowRoot.appendChild(style);
     shadowRoot.appendChild(div);
+    shadowRoot.appendChild(script);
   });
 </script>

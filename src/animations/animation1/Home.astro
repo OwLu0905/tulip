@@ -1,0 +1,13 @@
+---
+import ShadowRoot from "@components/ShadowRoot.astro";
+
+const html = await import.meta.glob("./index.html", { as: "raw" });
+const css = await import.meta.glob("./index.css", { as: "raw" });
+const js = await import.meta.glob("./index.js", { as: "raw" });
+const title = "";
+const htmlString = await html["./index.html"]();
+const cssString = await css["./index.css"]();
+const jsString = await js["./index.ts"];
+---
+
+<ShadowRoot css={cssString} html={htmlString} />

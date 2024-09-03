@@ -1,85 +1,22 @@
 ---
-import ShadowRoot from "@components/ShadowRoot.astro";
-import DynamicNoiseBackground from "@components/theme/DynamicNoiseBackground.astro";
-import CodeView from "@components/code-snippet/CodeView.astro";
 import "@styles/globals.css";
-import { ViewTransitions } from "astro:transitions";
-import Title from "@components/Title.astro";
 
-const css = `.code {
-	position: relative;
-	background-color: var(--vp-code-block-bg);
-	overflow-x: auto;
-	transition: background-color .5s;
-	width: 48rem;
-	margin: auto;
-}
-`;
+import BaseLayout from "@layout/BaseLayout.astro";
+
+const data = await Astro.glob("../animations/*/Home.astro");
 ---
 
-<script is:inline>
-  const getThemePreference = () => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
+<BaseLayout>
+  <div class="grid grid-cols-4 gap-4">
+    {
+      data.map((i, index) => {
+        const Content = i.default;
+        return (
+          <a href={`/posts/${index}`}>
+            <Content />
+          </a>
+        );
+      })
     }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  };
-  const isDark = getThemePreference() === "dark";
-  document.documentElement.classList[isDark ? "add" : "remove"]("dark");
-
-  if (typeof localStorage !== "undefined") {
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-  }
-</script>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <ViewTransitions />
-    <title>Tulip</title>
-  </head>
-  <body class="bg-background">
-    <DynamicNoiseBackground />
-
-    <nav
-      class="mx-28 my-4 flex h-10 w-fit items-center truncate rounded-lg bg-primary px-4 shadow-md backdrop-blur-[8.25rem]"
-    >
-      <button id="mode-theme">mode toggle</button>
-    </nav>
-    <section class="mx-4 my-10 flex flex-col gap-4 lg:mx-10">
-      <Title title={"twtwtwtwtwtw"} />
-      <div class="flex flex-col items-start gap-2 lg:flex-row lg:gap-4">
-        <ShadowRoot
-          css={css}
-          html={`<div>
-									content
-							</div>`}
-        />
-        <div
-          class="relative w-full flex-shrink-0 lg:w-2/5 [&>pre]:h-[60dvh] [&>pre]:lg:h-[80dvh]"
-        >
-          <CodeView css={css} />
-        </div>
-      </div>
-    </section>
-  </body>
-</html>
-
-<script>
-  const darkBtn = document.querySelector("#mode-theme")!;
-  darkBtn.addEventListener("click", () => {
-    const isDarkMode = document.documentElement.classList.contains("dark");
-    document.documentElement.classList[!isDarkMode ? "add" : "remove"]("dark");
-  });
-</script>
+  </div>
+</BaseLayout>

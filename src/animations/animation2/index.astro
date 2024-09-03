@@ -1,0 +1,15 @@
+---
+import CodeContainer from "@components/code-snippet/CodeContainer.astro";
+import "@styles/globals.css";
+
+const html = await import.meta.glob("./index.html", { as: "raw" });
+const css = await import.meta.glob("./index.css", { as: "raw" });
+const htmlString = await html["./index.html"]();
+const cssString = await css["./index.css"]();
+---
+
+<CodeContainer
+  title="From Uiverse.io by ShrinilDhorda"
+  htmlString={htmlString}
+  cssString={cssString}
+/>
