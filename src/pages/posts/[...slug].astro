@@ -16,20 +16,21 @@ export async function getStaticPaths() {
 
 const { entry, prevSlug, nextSlug } = Astro.props;
 const { Content } = await entry.render();
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout>
   <Content />
 </BaseLayout>
-<script define:vars={{ prevSlug, nextSlug }}>
+<script define:vars={{ prevSlug, nextSlug, baseUrl }}>
   document.addEventListener("astro:page-load", () => {
     document.addEventListener("keydown", function (e) {
       if (e.key === "ArrowLeft" && prevSlug !== undefined) {
-        this.location.href = `/posts/${prevSlug}`;
+        this.location.href = `${baseUrl}/posts/${prevSlug}`;
       }
 
       if (e.key === "ArrowRight" && nextSlug !== undefined) {
-        this.location.href = `/posts/${nextSlug}`;
+        this.location.href = `${baseUrl}/posts/${nextSlug}`;
       }
     });
   });

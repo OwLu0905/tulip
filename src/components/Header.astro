@@ -1,5 +1,7 @@
 ---
 import Title from "./Title.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <header class="relative w-full border-b border-primary/20">
@@ -7,7 +9,7 @@ import Title from "./Title.astro";
     class="z-[20] flex w-full items-center bg-background px-4 backdrop-blur-lg transition-[padding] duration-500 ease-in-out lg:px-20"
   >
     <div class="text-2xl tracking-wide">
-      <a href="/">
+      <a href={`${baseUrl}`}>
         <Title title={"Tulip"} />
       </a>
     </div>
@@ -15,12 +17,15 @@ import Title from "./Title.astro";
       class="ml-auto flex gap-2 text-sm lg:text-base [&>li]:w-16 [&>li]:px-4 [&>li]:py-6 [&>li]:text-center lg:[&>li]:w-28"
     >
       <li>
-        <a href="/">Home</a>
+        <a href={`${baseUrl}`}> Home</a>
       </li>
-      <li>Github</li>
 
       <li>
-        <button id="mode-theme">Button</button>
+        <a href="https://github.com/OwLu0905/tulip" target="_blank"> Github </a>
+      </li>
+
+      <li>
+        <button id="mode-theme">Mode</button>
       </li>
     </ul>
   </nav>
@@ -103,7 +108,7 @@ import Title from "./Title.astro";
 
     const headerObserver = new IntersectionObserver(
       stickyNav,
-      navObserverOption
+      navObserverOption,
     );
 
     if (headerEle) {
