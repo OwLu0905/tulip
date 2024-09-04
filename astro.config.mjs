@@ -7,5 +7,8 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
 	integrations: [tailwind({
 		applyBaseStyles: false
-	}), mdx()]
+	}), mdx()],
+	site: "https://owlu0905.github.io",
+	base: "tulip"
+
 });
