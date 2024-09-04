@@ -23,7 +23,7 @@ const baseUrl = import.meta.env.BASE_URL;
 <BaseLayout title={title}>
   <Content />
 </BaseLayout>
-<script define:vars={{ prevSlug, nextSlug, baseUrl }}>
+<script is:inline define:vars={{ prevSlug, nextSlug, baseUrl }}>
   document.addEventListener("astro:page-load", () => {
     document.addEventListener("keydown", function (e) {
       if (e.key === "ArrowLeft" && prevSlug !== undefined) {

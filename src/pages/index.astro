@@ -2,20 +2,23 @@
 import "@styles/globals.css";
 
 import BaseLayout from "@layout/BaseLayout.astro";
+import Card from "@components/ui/Card.astro";
 
 const data = await Astro.glob("../animations/*/Home.astro");
 
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout>
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+<BaseLayout title="Tulip">
+  <div class="my-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
     {
       data.map((i, index) => {
         const Content = i.default;
         return (
           <a href={`${baseUrl}/posts/${index}`}>
-            <Content />
+            <Card>
+              <Content />
+            </Card>
           </a>
         );
       })
