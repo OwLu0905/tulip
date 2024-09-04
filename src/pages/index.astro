@@ -9,7 +9,7 @@ const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout>
-  <div class="grid grid-cols-4 gap-4">
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
     {
       data.map((i, index) => {
         const Content = i.default;
