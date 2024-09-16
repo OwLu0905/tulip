@@ -3,16 +3,25 @@ import CodeContainer from "@components/code-snippet/CodeContainer.astro";
 
 import "@styles/globals.css";
 
-const html = await import.meta.glob("./index.html", { as: "raw" });
-const css = await import.meta.glob("./index.css", { as: "raw" });
-const js = await import.meta.glob("./index.js", { as: "raw" });
+const html = await import.meta.glob<string>("./index.html", {
+  query: "?raw",
+  import: "default",
+});
+const css = await import.meta.glob<string>("./index.css", {
+  query: "?raw",
+  import: "default",
+});
+const js = await import.meta.glob<string>("./index.js", {
+  query: "?raw",
+  import: "default",
+});
 const htmlString = await html["./index.html"]();
 const cssString = await css["./index.css"]();
 // const jsString = await js["./index.ts"];
 ---
 
 <CodeContainer
-  title="From Uiverse.io by vinodjangid07"
+  title={"Hello 1"}
   htmlString={htmlString}
   cssString={cssString}
 />

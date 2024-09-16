@@ -14,6 +14,7 @@
     "@astrojs/mdx": "^3.1.5",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.14.5",
+    "commander": "^12.1.0",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4"
   },
