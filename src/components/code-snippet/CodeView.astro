@@ -30,11 +30,10 @@ const { css, html, js } = Astro.props;
     name="code"
     value="html"
     type="radio"
-    checked
   />
   <label
     for="html"
-    class="astro-code-font relative z-[1] mb-0 ml-4 flex items-center bg-transparent px-6 py-2"
+    class="astro-code-font relative z-[1] mb-0 ml-4 flex items-center bg-transparent px-6 py-2 peer-checked/html:bg-primary/40"
   >
     <div class="z-[1]">HTML</div>
   </label>
@@ -47,7 +46,7 @@ const { css, html, js } = Astro.props;
       dark: "rose-pine",
     }}
     wrap
-    class="absolute left-0 top-8 hidden h-full w-full peer-checked/html:block"
+    class="absolute left-0 top-10 hidden h-full w-full peer-checked/html:block"
   />
 
   <input
@@ -56,10 +55,11 @@ const { css, html, js } = Astro.props;
     name="code"
     value="css"
     type="radio"
+    checked
   />
   <label
     for="css"
-    class="astro-code-font z-[1] mb-0 flex items-center bg-transparent px-6 py-2"
+    class="astro-code-font z-[1] mb-0 flex items-center bg-transparent px-6 py-2 peer-checked/css:bg-primary/40"
   >
     <div class="z-[1]">CSS</div>
   </label>
@@ -71,7 +71,7 @@ const { css, html, js } = Astro.props;
       dark: "rose-pine",
     }}
     wrap
-    class="absolute left-0 top-8 hidden h-full w-full peer-checked/css:block"
+    class="absolute left-0 top-10 hidden h-full w-full peer-checked/css:block"
   />
 
   {
@@ -106,7 +106,7 @@ const { css, html, js } = Astro.props;
           dark: "rose-pine",
         }}
         wrap
-        class="absolute left-0 top-8 hidden h-full w-full peer-checked/js:block"
+        class="absolute left-0 top-10 hidden h-full w-full peer-checked/js:block"
       />
     )
   }
