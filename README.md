@@ -1,8 +1,8 @@
 ## CSS Animations Collection
 
 ### TODO
-- [ ] color, theme, dark mode
-- [ ] layout(header, footer, section)
+- [x] color, theme, dark mode
+- [x] layout(header, footer, section)
 - [ ] editor
 - [ ] LSP
 
