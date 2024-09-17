@@ -1,5 +1,5 @@
 import { program } from "commander";
-import { createTemplate } from "./createTemplate";
+import { createTemplate } from "./createTemplate.js";
 
 program
   .version("1.0.0")
