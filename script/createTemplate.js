@@ -23,12 +23,12 @@ async function createTemplate(title) {
   // TODO: get file length based on mdx
   try {
     const files = await fs.readdir(mdxsDir);
-    const idx = files.length;
+    const idx = files.length + 1;
 
     const templateAnimationDir = path.join(templateDir, "animation");
     const templateMdxDir = path.join(templateDir, "mdx");
 
-    const animationTargetDir = path.join(animationsDir, `animation${idx + 1}`);
+    const animationTargetDir = path.join(animationsDir, `animation${idx}`);
     await createFolder(animationTargetDir);
 
     await writeContents(
@@ -39,7 +39,7 @@ async function createTemplate(title) {
       idx,
     );
 
-    const mdxTargetName = `post-${idx + 1}.mdx`;
+    const mdxTargetName = `post-${idx}.mdx`;
     await writeContents(templateMdxDir, mdxsDir, mdxTargetName, title, idx);
   } catch (error) {
     console.error("Error generating Templates :", error);
