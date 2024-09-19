@@ -1,0 +1,31 @@
+button {
+	all: unset;
+}
+
+button {
+	position: relative;
+	padding: 0.2em 2em;
+	border: 0.1em solid #fbafcf;
+	overflow: hidden;
+	font-size: 1rem;
+	flex-shrink: 0;
+	font-weight: 600;
+	cursor: pointer;
+	text-wrap: nowrap;
+	transition: color 1s;
+	transition-timing-function: ease-in-out;
+	letter-spacing: -1px;
+	transition: all 0.5s;
+	font-weight: 300;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 16px;
+}
+
+button:hover {
+	font-weight: 900;
+
+	letter-spacing: 8px;
+
+	font-size: 18px;
+	border: 0.2em solid #fbafcf;
+}
