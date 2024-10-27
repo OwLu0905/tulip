@@ -1,0 +1,45 @@
+button {
+	all: unset;
+}
+
+button {
+	position: relative;
+	padding: 0.0rem 2rem;
+	border: 0.1em solid teal;
+	color: teal;
+	overflow: hidden;
+	cursor: pointer;
+	text-wrap: nowrap;
+}
+
+
+button::before {
+	content: 'YEAH!';
+	color: initial;
+	width: 100%;
+	text-align: center;
+	background-color: transparent;
+}
+
+button::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* top: -100%; */
+	transform: translateY(-100%);
+	transform-origin: left;
+	transition: background-color 0.4s, transform 0.6s;
+	transition-timing-function: ease-in-out;
+
+}
+
+/**
+* NOTE: 
+* 1. translateY has better performance
+* 2. won't trigger reflows
+*/
+button:hover:before {
+	/* top: 0px */
+	transform: translateY(0);
+	background-color: teal;
+}
